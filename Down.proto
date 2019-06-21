@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package PbDownMaxSize;
+
+// 定义服务
+service PbDownMaxSize {
+
+	// RPC上传大文件分片
+	rpc DownLoad (reqDown) returns (resDown) {}
+}
+
+// 下载的请求参数
+message reqDown {
+	// 文件名称
+	string name = 1;
+
+}
+
+
+
+// 应答消息
+message resDown {
+	// 返回提示消息
+	string retMsg = 1;
+		
+	// 返回的碎片影像的buffer
+	bytes fileBuf = 2;
+	
+	// 返回的状态码(0表示成功,其他失败)
+	int32 iRet = 3;
+}
